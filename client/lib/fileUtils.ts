@@ -214,11 +214,16 @@ export const deleteFile = async (
     // Delete from Firestore
     await deleteDoc(doc(db, "users", userId, "files", fileId));
     console.log("[Delete] Metadata deleted from Firestore:", fileId);
+
+    // Recalculate storage used
+    await updateUserStorageUsed(userId);
   } catch (error: any) {
     console.error("[Delete] Error:", error);
     if (error.code === "storage/object-not-found") {
       // File already deleted from storage, just remove metadata
       await deleteDoc(doc(db, "users", userId, "files", fileId));
+      // Recalculate storage used
+      await updateUserStorageUsed(userId);
       return;
     }
     throw new Error(`Failed to delete file: ${error.message}`);
