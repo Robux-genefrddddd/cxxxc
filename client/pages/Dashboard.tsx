@@ -132,6 +132,7 @@ export default function Dashboard() {
       }
 
       await loadFiles();
+      await refreshUserData();
       setUploadProgress(0);
     } catch (err: any) {
       setError(err.message || "Failed to upload file");
