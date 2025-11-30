@@ -156,6 +156,7 @@ export default function Dashboard() {
       if (file) {
         await deleteFile(user.uid, fileId, file.storagePath || "");
         await loadFiles();
+        await refreshUserData();
       }
     } catch (err) {
       setError("Failed to delete file");
