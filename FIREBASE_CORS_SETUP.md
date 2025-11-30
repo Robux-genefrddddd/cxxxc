@@ -3,6 +3,7 @@
 ## Prerequisites
 
 Before deploying CORS, ensure you have:
+
 - Firebase CLI installed: `npm install -g firebase-tools`
 - Authenticated with Firebase: `firebase login`
 - Your project initialized: `firebase init`
@@ -22,6 +23,7 @@ The CORS configuration is defined in `cors.json`:
 ```
 
 This configuration:
+
 - Allows requests from all origins (`*`)
 - Supports all required HTTP methods for file uploads/downloads
 - Sets cache duration to 1 hour (3600 seconds)
@@ -69,6 +71,7 @@ firebase deploy --only storage
 ```
 
 The rules are defined in `firebase-storage.rules` and enforce:
+
 - Users can only access their own files in `users/{userId}/*`
 - All requests must be authenticated
 - Exact path matching prevents unauthorized access

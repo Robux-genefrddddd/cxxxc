@@ -103,7 +103,11 @@ export default function ResetPassword() {
                 </div>
               )}
 
-              <button type="submit" disabled={loading} className="btn-primary w-full">
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary w-full"
+              >
                 {loading ? "Sending..." : "Send Reset Link"}
               </button>
             </form>

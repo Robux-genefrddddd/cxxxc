@@ -168,9 +168,7 @@ export function ShareModal({ file, onClose }: ShareModalProps) {
               <button
                 onClick={copyToClipboard}
                 className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-medium transition-all duration-200 ${
-                  copied
-                    ? "bg-green-500/10 text-green-400"
-                    : "btn-primary"
+                  copied ? "bg-green-500/10 text-green-400" : "btn-primary"
                 }`}
               >
                 {copied ? (

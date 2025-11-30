@@ -94,9 +94,7 @@ export default function SharedFile() {
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-border border-t-primary rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-muted-foreground font-medium">
-            Loading file...
-          </p>
+          <p className="text-muted-foreground font-medium">Loading file...</p>
         </div>
       </div>
     );

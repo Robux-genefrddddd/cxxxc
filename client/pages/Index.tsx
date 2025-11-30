@@ -106,7 +106,8 @@ export default function Index() {
 
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
               Upload, share, and manage your files with confidence.
-              Enterprise-grade security, intuitive interface, unlimited potential.
+              Enterprise-grade security, intuitive interface, unlimited
+              potential.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -257,7 +258,8 @@ export default function Index() {
                   {
                     icon: Users,
                     title: "Private",
-                    description: "Your files are yours alone, completely private",
+                    description:
+                      "Your files are yours alone, completely private",
                   },
                 ].map((item, index) => {
                   const Icon = item.icon;

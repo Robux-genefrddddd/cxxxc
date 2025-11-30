@@ -210,7 +210,8 @@ export default function Settings() {
                   Share Token
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Your unique token for creating shared links. Keep this private.
+                  Your unique token for creating shared links. Keep this
+                  private.
                 </p>
               </div>
             </div>
@@ -249,9 +250,7 @@ export default function Settings() {
                   <HardDrive className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-foreground">
-                    Storage
-                  </h2>
+                  <h2 className="text-xl font-bold text-foreground">Storage</h2>
                   <p className="text-sm text-muted-foreground mt-1">
                     Monitor your storage usage
                   </p>
@@ -278,7 +277,7 @@ export default function Settings() {
                       style={{
                         width: `${Math.min(
                           (userData.storageUsed / userData.storageLimit) * 100,
-                          100
+                          100,
                         )}%`,
                       }}
                     />
@@ -287,23 +286,17 @@ export default function Settings() {
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
                   <div>
-                    <p className="text-xs text-muted-foreground mb-1">
-                      Used
-                    </p>
+                    <p className="text-xs text-muted-foreground mb-1">Used</p>
                     <p className="text-lg font-semibold text-foreground">
-                      {(userData.storageUsed / (1024 * 1024 * 1024)).toFixed(
-                        1
-                      )}{" "}
+                      {(userData.storageUsed / (1024 * 1024 * 1024)).toFixed(1)}{" "}
                       GB
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground mb-1">
-                      Limit
-                    </p>
+                    <p className="text-xs text-muted-foreground mb-1">Limit</p>
                     <p className="text-lg font-semibold text-foreground">
                       {(userData.storageLimit / (1024 * 1024 * 1024)).toFixed(
-                        0
+                        0,
                       )}{" "}
                       GB
                     </p>
@@ -352,9 +345,7 @@ export default function Settings() {
                     disabled={deleteLoading}
                     className="btn-destructive flex-1"
                   >
-                    {deleteLoading
-                      ? "Deleting..."
-                      : "Yes, delete my account"}
+                    {deleteLoading ? "Deleting..." : "Yes, delete my account"}
                   </button>
                   <button
                     onClick={() => setDeleteConfirm(false)}

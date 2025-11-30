@@ -43,7 +43,7 @@ export const uploadFile = async (
   }
 
   // Validate userId format (Firebase UIDs are non-empty strings)
-  if (typeof userId !== 'string' || userId.length === 0) {
+  if (typeof userId !== "string" || userId.length === 0) {
     throw new Error("Invalid user authentication state");
   }
 
@@ -146,7 +146,10 @@ export const uploadFile = async (
       );
     } else if (error.code === "storage/bucket-not-found") {
       throw new Error("Storage bucket not accessible. Check Firebase config.");
-    } else if (error.message?.includes("Network") || error.message?.includes("Failed to fetch")) {
+    } else if (
+      error.message?.includes("Network") ||
+      error.message?.includes("Failed to fetch")
+    ) {
       throw new Error(
         "Network error during upload. Ensure CORS is configured and connection is active.",
       );

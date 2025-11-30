@@ -22,10 +22,8 @@ export function Header() {
     navigate("/login");
   };
 
-  const userInitials = user?.email
-    ?.split("@")[0]
-    .substring(0, 2)
-    .toUpperCase() || "?";
+  const userInitials =
+    user?.email?.split("@")[0].substring(0, 2).toUpperCase() || "?";
 
   return (
     <header className="sticky top-0 z-40 bg-card border-b border-border">
@@ -90,7 +88,9 @@ export function Header() {
               {menuOpen && (
                 <div className="absolute right-0 top-full mt-1 bg-card border border-border rounded-lg shadow-xl min-w-max overflow-hidden animate-fadeIn">
                   <div className="px-4 py-3 border-b border-border bg-secondary/20">
-                    <p className="text-xs text-muted-foreground">Signed in as</p>
+                    <p className="text-xs text-muted-foreground">
+                      Signed in as
+                    </p>
                     <p className="text-sm font-semibold text-foreground truncate">
                       {user?.email}
                     </p>

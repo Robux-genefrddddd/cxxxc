@@ -42,11 +42,17 @@ export default function NotFound() {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link to="/" className="btn-primary flex items-center justify-center gap-2">
+          <Link
+            to="/"
+            className="btn-primary flex items-center justify-center gap-2"
+          >
             <Home className="w-4 h-4" />
             Go to home
           </Link>
-          <Link to="/login" className="btn-secondary flex items-center justify-center gap-2">
+          <Link
+            to="/login"
+            className="btn-secondary flex items-center justify-center gap-2"
+          >
             <ArrowLeft className="w-4 h-4" />
             Go to login
           </Link>

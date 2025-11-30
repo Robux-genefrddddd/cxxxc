@@ -137,9 +137,7 @@ export default function Dashboard() {
     try {
       for (let i = 0; i < droppedFiles.length; i++) {
         const file = droppedFiles[i];
-        setUploadProgress(
-          Math.round(((i + 1) / droppedFiles.length) * 100)
-        );
+        setUploadProgress(Math.round(((i + 1) / droppedFiles.length) * 100));
         await uploadFile(user.uid, file);
       }
 
@@ -208,9 +206,7 @@ export default function Dashboard() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Welcome Section */}
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-foreground">
-            Welcome back
-          </h1>
+          <h1 className="text-3xl font-bold text-foreground">Welcome back</h1>
           <p className="text-muted-foreground">
             Manage your files and secure storage
           </p>
@@ -325,9 +321,11 @@ export default function Dashboard() {
           />
 
           <div className="flex flex-col items-center">
-            <div className={`p-4 rounded-lg mb-4 transition-all ${
-              isDragging ? "bg-primary/20" : "bg-secondary"
-            }`}>
+            <div
+              className={`p-4 rounded-lg mb-4 transition-all ${
+                isDragging ? "bg-primary/20" : "bg-secondary"
+              }`}
+            >
               <Upload
                 className={`w-8 h-8 transition-colors ${
                   isDragging ? "text-primary" : "text-primary"
@@ -335,7 +333,9 @@ export default function Dashboard() {
               />
             </div>
             <p className="text-lg font-semibold text-foreground mb-1">
-              {isDragging ? "Drop files here" : "Drop files here or click to upload"}
+              {isDragging
+                ? "Drop files here"
+                : "Drop files here or click to upload"}
             </p>
             <p className="text-sm text-muted-foreground mb-4">
               PNG, JPG, PDF, DOC, or any other file up to 5GB
