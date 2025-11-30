@@ -36,7 +36,8 @@ export default function Login() {
         errorMessage.includes("USER_NOT_FOUND") ||
         errorMessage.includes("user-not-found")
       ) {
-        userFriendlyError = "Email not found. Please check or register a new account.";
+        userFriendlyError =
+          "Email not found. Please check or register a new account.";
       } else if (
         errorCode.includes("wrong-password") ||
         errorMessage.includes("INVALID_PASSWORD") ||
@@ -128,7 +129,10 @@ export default function Login() {
           <div className="mt-6 text-center text-sm">
             <p className="text-muted-foreground">
               Don't have an account?{" "}
-              <Link to="/register" className="text-primary font-medium hover:underline">
+              <Link
+                to="/register"
+                className="text-primary font-medium hover:underline"
+              >
                 Register
               </Link>
             </p>
@@ -136,7 +140,10 @@ export default function Login() {
 
           <div className="mt-4 pt-4 border-t border-border">
             <p className="text-center text-xs text-muted-foreground">
-              <Link to="/reset-password" className="text-primary hover:underline">
+              <Link
+                to="/reset-password"
+                className="text-primary hover:underline"
+              >
                 Forgot password?
               </Link>
             </p>

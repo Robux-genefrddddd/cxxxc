@@ -27,10 +27,16 @@ export default function Index() {
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="#features"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Features
               </a>
-              <a href="#security" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="#security"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Security
               </a>
               <div className="flex items-center gap-2">
@@ -40,17 +46,17 @@ export default function Index() {
                 >
                   Login
                 </Link>
-                <Link
-                  to="/register"
-                  className="btn-primary text-sm py-2 px-4"
-                >
+                <Link to="/register" className="btn-primary text-sm py-2 px-4">
                   Sign Up
                 </Link>
               </div>
             </nav>
 
             <div className="md:hidden flex items-center gap-2">
-              <Link to="/login" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link
+                to="/login"
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
                 Login
               </Link>
               <Link to="/register" className="btn-primary text-sm py-2 px-4">
@@ -68,11 +74,15 @@ export default function Index() {
             Your secure cloud storage, simplified
           </h2>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            Upload, share, and manage your files with confidence. Enterprise-grade security, intuitive interface, unlimited potential.
+            Upload, share, and manage your files with confidence.
+            Enterprise-grade security, intuitive interface, unlimited potential.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link to="/register" className="btn-primary py-3 px-6 text-base font-medium">
+            <Link
+              to="/register"
+              className="btn-primary py-3 px-6 text-base font-medium"
+            >
               Get Started Free
             </Link>
             <Link
@@ -110,32 +120,38 @@ export default function Index() {
               {
                 icon: Zap,
                 title: "Lightning Fast",
-                description: "Upload and download files at blazing speeds with optimized infrastructure",
+                description:
+                  "Upload and download files at blazing speeds with optimized infrastructure",
               },
               {
                 icon: Shield,
                 title: "Bank-Level Security",
-                description: "End-to-end encryption and advanced security protocols protect your data",
+                description:
+                  "End-to-end encryption and advanced security protocols protect your data",
               },
               {
                 icon: Users,
                 title: "Easy Sharing",
-                description: "Create secure share links with expiration dates and access control",
+                description:
+                  "Create secure share links with expiration dates and access control",
               },
               {
                 icon: Lock,
                 title: "Privacy First",
-                description: "Your files are yours alone. We never access or share your data",
+                description:
+                  "Your files are yours alone. We never access or share your data",
               },
               {
                 icon: Cloud,
                 title: "Any Device",
-                description: "Access your files from anywhere, anytime, on any device",
+                description:
+                  "Access your files from anywhere, anytime, on any device",
               },
               {
                 icon: Zap,
                 title: "Reliable Uptime",
-                description: "99.9% uptime guarantee with automatic backups and redundancy",
+                description:
+                  "99.9% uptime guarantee with automatic backups and redundancy",
               },
             ].map((feature) => {
               const Icon = feature.icon;
@@ -166,7 +182,8 @@ export default function Index() {
                 Security is our priority
               </h3>
               <p className="text-lg text-muted-foreground mb-6">
-                We implement industry-leading security measures to protect your files and privacy.
+                We implement industry-leading security measures to protect your
+                files and privacy.
               </p>
 
               <ul className="space-y-4">
@@ -236,7 +253,8 @@ export default function Index() {
             Ready to secure your files?
           </h3>
           <p className="text-lg opacity-90 mb-8">
-            Join thousands of users who trust CloudVault for their data storage needs
+            Join thousands of users who trust CloudVault for their data storage
+            needs
           </p>
           <Link
             to="/register"

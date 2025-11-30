@@ -9,6 +9,7 @@ CloudVault is a complete cloud storage solution featuring enterprise-grade secur
 ## ✨ Key Features
 
 ### User Management
+
 - **Registration**: Create new accounts with email and password
 - **Authentication**: Secure login with Firebase Authentication
 - **Password Reset**: Email-based password recovery
@@ -16,6 +17,7 @@ CloudVault is a complete cloud storage solution featuring enterprise-grade secur
 - **Account Deletion**: Permanently delete account and all files
 
 ### File Management
+
 - **Upload**: Support for files up to 5GB
 - **Download**: Direct file downloads to your device
 - **Delete**: Permanent file deletion with confirmation
@@ -23,12 +25,14 @@ CloudVault is a complete cloud storage solution featuring enterprise-grade secur
 - **Storage Tracking**: Real-time storage usage display
 
 ### File Sharing
+
 - **Share Links**: Generate expirable share links for files
 - **Public Access**: Access shared files without login
 - **Token-based**: Secure tokens for share links
 - **Expiration Control**: Set custom link expiry times (1 hour to 1 month)
 
 ### Security
+
 - ✅ Email/Password Authentication (Firebase Auth)
 - ✅ Strict Firestore Security Rules
 - ✅ User Data Isolation
@@ -78,6 +82,7 @@ README.md                     # This file
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 16+
 - pnpm (recommended) or npm
 - Firebase account
@@ -85,6 +90,7 @@ README.md                     # This file
 ### Installation
 
 1. **Install Dependencies**
+
    ```bash
    pnpm install
    ```
@@ -126,6 +132,7 @@ pnpm start
 ## 📖 User Flow
 
 ### Registration & Login
+
 1. User visits landing page
 2. Click "Sign Up" to create account
 3. Enter email and password
@@ -133,6 +140,7 @@ pnpm start
 5. Redirected to Dashboard
 
 ### File Upload
+
 1. User in Dashboard clicks upload area
 2. Select one or multiple files
 3. Files uploaded to Cloud Storage
@@ -140,12 +148,14 @@ pnpm start
 5. Files appear in file list immediately
 
 ### File Download
+
 1. In Dashboard, find file
 2. Click three-dot menu
 3. Select "Download"
 4. File downloads to device
 
 ### File Sharing
+
 1. Click three-dot menu on file
 2. Select "Share"
 3. Choose link expiry time
@@ -154,6 +164,7 @@ pnpm start
 6. Others can download without login
 
 ### Account Management
+
 1. Click profile in header
 2. Select "Settings"
 3. Change password or regenerate token
@@ -162,24 +173,28 @@ pnpm start
 ## 🔐 Security Details
 
 ### Authentication
+
 - Firebase Authentication handles user registration & login
 - Passwords never stored in Firestore
 - Automatic session management
 - Secure token generation for sharing
 
 ### Data Protection
+
 - Firestore rules enforce user-level isolation
 - Users can only read/write their own data
 - Cloud Storage rules prevent cross-user access
 - All data encrypted in transit (HTTPS)
 
 ### File Storage
+
 - Files stored in user-specific directories
 - Unique file IDs prevent collision
 - File metadata tracked in Firestore
 - Storage size tracking per user
 
 ### Share Links
+
 - Random token generation (36-bit strings)
 - Expiry time enforcement
 - Single-use link generation per file
@@ -203,6 +218,7 @@ GET    /files/share/resolve    # Access shared file
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary**: Professional Blue (#1D4ED8)
 - **Background**: Clean White (#FFFFFF)
 - **Text**: Dark Gray (#1F2937)
@@ -210,11 +226,13 @@ GET    /files/share/resolve    # Access shared file
 - **Destructive**: Red (#DC2626)
 
 ### Typography
+
 - **Font**: Inter (system-ui fallback)
 - **Headings**: Bold, tight tracking
 - **Body**: 400-500 weight, readable line-height
 
 ### Components
+
 - Rounded corners (0.5rem radius)
 - Subtle shadows for depth
 - Smooth transitions (0.2s ease)
@@ -231,6 +249,7 @@ All pages are fully responsive and tested on various screen sizes.
 ## 🔄 State Management
 
 Uses React Context API for:
+
 - Authentication state
 - User profile data
 - File list management
@@ -242,18 +261,21 @@ No Redux needed for this application size.
 ## 🚀 Deployment Options
 
 ### Netlify
+
 ```bash
 pnpm build
 netlify deploy --prod
 ```
 
 ### Vercel
+
 ```bash
 pnpm build
 vercel --prod
 ```
 
 ### Self-Hosted
+
 ```bash
 pnpm build
 pnpm start
@@ -270,16 +292,19 @@ pnpm start
 ## 🐛 Troubleshooting
 
 ### Upload fails
+
 - Check Cloud Storage rules are configured
 - Verify file size < 5GB
 - Check Firebase quota
 
 ### Login doesn't work
+
 - Ensure Authentication is enabled in Firebase
 - Check email exists in Firebase Console
 - Try password reset
 
 ### Files not visible
+
 - Check Firestore rules are deployed
 - Verify user is authenticated
 - Check browser console for errors
@@ -312,6 +337,7 @@ This project is open source and available under the MIT License.
 ## 🤝 Support
 
 For issues or questions:
+
 1. Check SETUP.md for configuration help
 2. Review Firebase documentation
 3. Check browser console for errors

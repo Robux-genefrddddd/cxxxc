@@ -63,7 +63,7 @@ service firebase.storage {
     match /users/{userId}/{allPaths=**} {
       allow read, write: if request.auth.uid == userId;
     }
-    
+
     // Deny all other access
     match /{allPaths=**} {
       allow read, write: if false;
@@ -132,16 +132,19 @@ SETUP.md                   # This file
 ## Usage
 
 ### Creating an Account
+
 1. Click "Sign Up" on the landing page
 2. Enter email and password
 3. Account is created and user is logged in
 
 ### Uploading Files
+
 1. Click the upload area on Dashboard
 2. Select one or multiple files
 3. Files are uploaded to secure storage
 
 ### Sharing Files
+
 1. Click the three-dot menu on a file
 2. Select "Share"
 3. Choose link expiry time
@@ -149,16 +152,19 @@ SETUP.md                   # This file
 5. Share with others (no login required to access)
 
 ### Account Settings
+
 1. Click your profile in the header
 2. Select "Settings"
 3. Change password or regenerate share token
 
 ### Downloading Files
+
 1. Click the three-dot menu on a file
 2. Select "Download"
 3. File downloads to your device
 
 ### Deleting Files
+
 1. Click the three-dot menu on a file
 2. Select "Delete"
 3. Confirm deletion
@@ -170,15 +176,18 @@ The app uses Firebase configuration embedded in `client/lib/firebase.ts`. No add
 ## Troubleshooting
 
 ### "Permission denied" errors when uploading
+
 - Check that Cloud Storage rules are properly configured
 - Verify user is authenticated
 
 ### Files don't appear after upload
+
 - Check browser console for errors
 - Verify Firestore rules allow read access
 - Check network tab for failed requests
 
 ### Can't login
+
 - Verify Firebase Authentication is enabled
 - Check user exists in Firebase Console
 - Try resetting password
@@ -218,6 +227,7 @@ This project is open source and available under the MIT License.
 ---
 
 **For production use**, consider:
+
 - Enabling two-factor authentication in Firebase
 - Setting up backup and recovery procedures
 - Implementing GDPR compliance features

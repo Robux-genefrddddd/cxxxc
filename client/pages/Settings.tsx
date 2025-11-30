@@ -97,7 +97,9 @@ export default function Settings() {
       <Header />
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-3xl font-bold text-foreground mb-8">Account Settings</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-8">
+          Account Settings
+        </h2>
 
         {/* Change Password Section */}
         <div className="card-base p-6 mb-8">

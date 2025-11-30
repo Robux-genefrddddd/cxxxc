@@ -69,7 +69,10 @@ export default function Dashboard() {
   };
 
   const handleDelete = async (fileId: string) => {
-    if (!user || !window.confirm("Are you sure you want to delete this file?")) {
+    if (
+      !user ||
+      !window.confirm("Are you sure you want to delete this file?")
+    ) {
       return;
     }
 
@@ -92,11 +95,7 @@ export default function Dashboard() {
     if (!user) return;
 
     try {
-      await downloadFile(
-        user.uid,
-        file.storagePath || "",
-        file.name
-      );
+      await downloadFile(user.uid, file.storagePath || "", file.name);
     } catch (err) {
       setError("Failed to download file");
       console.error(err);
@@ -132,7 +131,9 @@ export default function Dashboard() {
           <div className="card-base p-6 mb-8">
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-medium text-foreground">Storage used</p>
+                <p className="text-sm font-medium text-foreground">
+                  Storage used
+                </p>
                 <p className="text-sm text-muted-foreground">
                   {formatFileSize(userData.storageUsed)} /{" "}
                   {formatFileSize(userData.storageLimit)}
@@ -149,7 +150,8 @@ export default function Dashboard() {
         )}
 
         {/* Upload Section */}
-        <div className="card-base p-8 mb-8 text-center border-2 border-dashed border-border hover:border-primary transition-colors cursor-pointer"
+        <div
+          className="card-base p-8 mb-8 text-center border-2 border-dashed border-border hover:border-primary transition-colors cursor-pointer"
           onClick={() => fileInputRef.current?.click()}
         >
           <input
@@ -207,7 +209,9 @@ export default function Dashboard() {
 
           {files.length === 0 ? (
             <div className="card-base p-12 text-center">
-              <p className="text-muted-foreground">No files yet. Upload your first file to get started.</p>
+              <p className="text-muted-foreground">
+                No files yet. Upload your first file to get started.
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

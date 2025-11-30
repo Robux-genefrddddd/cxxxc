@@ -62,14 +62,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const generateShareToken = (): string => {
-    return Math.random().toString(36).substring(2, 15) +
+    return (
       Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15);
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
+    );
   };
 
   const register = async (email: string, password: string) => {
     try {
-      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       const shareToken = generateShareToken();
 
       // Create user document in Firestore
@@ -131,7 +137,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await updateDoc(doc(db, "users", user.uid), {
         shareToken: newToken,
       });
-      setUserData((prev) => prev ? { ...prev, shareToken: newToken } : null);
+      setUserData((prev) => (prev ? { ...prev, shareToken: newToken } : null));
       return newToken;
     } catch (error) {
       throw error;

@@ -28,7 +28,7 @@ export default function ResetPassword() {
       setError(
         err.message.includes("user-not-found")
           ? "Email not found"
-          : "Failed to send reset email. Please try again."
+          : "Failed to send reset email. Please try again.",
       );
     } finally {
       setLoading(false);

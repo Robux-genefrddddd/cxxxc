@@ -13,6 +13,7 @@ Follow this checklist to properly set up Firebase for CloudVault.
 ## Step 2: Set Up Authentication
 
 ### Enable Email/Password Authentication
+
 - [ ] In Firebase Console, go to **Authentication** (left sidebar)
 - [ ] Click on **Sign-in method** tab
 - [ ] Click on **Email/Password**
@@ -23,6 +24,7 @@ Follow this checklist to properly set up Firebase for CloudVault.
 ## Step 3: Set Up Cloud Firestore Database
 
 ### Create Database
+
 - [ ] Go to **Firestore Database** (left sidebar)
 - [ ] Click **Create database**
 - [ ] Select your region (closest to you)
@@ -30,6 +32,7 @@ Follow this checklist to properly set up Firebase for CloudVault.
 - [ ] Click **Create**
 
 ### Deploy Security Rules
+
 - [ ] In Firestore, go to **Rules** tab
 - [ ] Copy content from `firestore.rules` file in project root
 - [ ] Paste into the rules editor
@@ -38,12 +41,14 @@ Follow this checklist to properly set up Firebase for CloudVault.
 ## Step 4: Set Up Cloud Storage
 
 ### Enable Cloud Storage
+
 - [ ] Go to **Cloud Storage** (left sidebar)
 - [ ] Click **Get started**
 - [ ] Select your region
 - [ ] Click **Done** (select default bucket)
 
 ### Deploy Storage Rules
+
 - [ ] Go to **Rules** tab
 - [ ] Replace content with:
 
@@ -55,7 +60,7 @@ service firebase.storage {
     match /users/{userId}/{allPaths=**} {
       allow read, write: if request.auth.uid == userId;
     }
-    
+
     // Deny all other access
     match /{allPaths=**} {
       allow read, write: if false;
@@ -69,6 +74,7 @@ service firebase.storage {
 ## Step 5: Get Firebase Configuration
 
 ### Find Your Config
+
 - [ ] In Firebase Console, go to **Project settings** (gear icon)
 - [ ] Go to **General** tab
 - [ ] Scroll to "Your apps" section
@@ -76,11 +82,13 @@ service firebase.storage {
 - [ ] Copy the config object
 
 ### Update Project
+
 - [ ] Open `client/lib/firebase.ts` in your project
 - [ ] Replace the `firebaseConfig` object with your config
 - [ ] Save the file
 
 **Example firebase.ts:**
+
 ```typescript
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -89,13 +97,14 @@ const firebaseConfig = {
   storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
   appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
+  measurementId: "YOUR_MEASUREMENT_ID",
 };
 ```
 
 ## Step 6: Verify Setup
 
 ### Test Authentication
+
 - [ ] Run `pnpm dev`
 - [ ] Go to registration page
 - [ ] Create a test account
@@ -103,6 +112,7 @@ const firebaseConfig = {
 - [ ] Verify your test user appears in "Users" tab
 
 ### Test Firestore
+
 - [ ] Try logging in with your test account
 - [ ] Dashboard should appear
 - [ ] Go to Firebase Console > Firestore Database
@@ -110,6 +120,7 @@ const firebaseConfig = {
 - [ ] You should see a `users` collection with your user document
 
 ### Test Storage
+
 - [ ] On Dashboard, try uploading a file
 - [ ] Upload should complete
 - [ ] Go to Firebase Console > Cloud Storage
@@ -118,6 +129,7 @@ const firebaseConfig = {
 ## Step 7: Set Up Firestore Indexes (if needed)
 
 If you get a message about needing an index:
+
 - [ ] Click the link in the error message
 - [ ] Firebase will auto-create the index
 - [ ] Wait for index to be created (usually 5-10 minutes)
@@ -127,7 +139,9 @@ If you get a message about needing an index:
 If uploading files doesn't work due to CORS:
 
 ### Create CORS file
+
 Create file `cors.json` in project root:
+
 ```json
 [
   {
@@ -140,6 +154,7 @@ Create file `cors.json` in project root:
 ```
 
 ### Apply CORS
+
 ```bash
 gsutil cors set cors.json gs://YOUR-BUCKET-NAME.appspot.com
 ```
@@ -147,27 +162,32 @@ gsutil cors set cors.json gs://YOUR-BUCKET-NAME.appspot.com
 ## Troubleshooting
 
 ### "Permission denied" during upload
+
 - [ ] Check Cloud Storage rules are deployed
 - [ ] Verify user is authenticated
 - [ ] Check CORS configuration
 - [ ] Try in incognito window to clear cache
 
 ### "Permission denied" on Firestore
+
 - [ ] Check Firestore rules are deployed
 - [ ] Verify `users/{userId}` path matches your user ID
 - [ ] Check Firestore Database > Rules shows your rules
 
 ### Firebase module not found
+
 - [ ] Run `pnpm install` to install dependencies
 - [ ] Delete `node_modules` and run `pnpm install` again
 - [ ] Clear browser cache
 
 ### Can't create account
+
 - [ ] Verify Authentication is enabled
 - [ ] Check password is at least 6 characters
 - [ ] Look for error in browser console
 
 ### 404 on login attempt
+
 - [ ] Check user exists in Firebase Console > Authentication
 - [ ] Try resetting password first
 - [ ] Try creating a new account
@@ -175,24 +195,28 @@ gsutil cors set cors.json gs://YOUR-BUCKET-NAME.appspot.com
 ## Security Configuration Checklist
 
 ### Authentication Security
+
 - [ ] Email/Password enabled
 - [ ] Disable anonymous authentication (if enabled)
 - [ ] Set password requirements (minimum length)
 - [ ] Consider enabling reCAPTCHA (in Production)
 
 ### Firestore Security
+
 - [ ] Rules deployed and tested
 - [ ] Rules deny all by default
 - [ ] Only allow authenticated users
 - [ ] Verify user isolation working
 
 ### Cloud Storage Security
+
 - [ ] Rules deployed and tested
 - [ ] Only authenticated users can upload
 - [ ] Users can only access their own files
 - [ ] Files have appropriate retention policy
 
 ### Additional Security
+
 - [ ] Enable Firestore backups (in settings)
 - [ ] Set up Activity logs monitoring
 - [ ] Review and enable app signatures (Play Store)

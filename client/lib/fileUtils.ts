@@ -35,7 +35,7 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024; // 5GB per file
 
 export const uploadFile = async (
   userId: string,
-  file: File
+  file: File,
 ): Promise<FileMetadata> => {
   // Auth check - CRITICAL
   if (!userId || userId.trim() === "") {
@@ -62,9 +62,7 @@ export const uploadFile = async (
     const storagePath = `users/${userId}/${timestamp}_${sanitizedFileName}`;
     const fileRef = ref(storage, storagePath);
 
-    console.log(
-      `[Upload] Starting upload for user ${userId}: ${storagePath}`
-    );
+    console.log(`[Upload] Starting upload for user ${userId}: ${storagePath}`);
 
     // Upload file to Firebase Storage
     const uploadResult = await uploadBytes(fileRef, file, {
@@ -75,7 +73,10 @@ export const uploadFile = async (
       },
     });
 
-    console.log("[Upload] File uploaded successfully:", uploadResult.ref.fullPath);
+    console.log(
+      "[Upload] File uploaded successfully:",
+      uploadResult.ref.fullPath,
+    );
 
     // Get download URL
     let downloadUrl = "";
@@ -85,26 +86,23 @@ export const uploadFile = async (
     } catch (urlError) {
       console.warn(
         "[Upload] Warning: Could not get download URL immediately",
-        urlError
+        urlError,
       );
       downloadUrl = `gs://${uploadResult.ref.bucket}/${storagePath}`;
     }
 
     // Save metadata to Firestore
-    const fileDoc = await addDoc(
-      collection(db, "users", userId, "files"),
-      {
-        fileName: file.name,
-        fileSize: file.size,
-        fileMimeType: file.type || "application/octet-stream",
-        uploadedAt: new Date().toISOString(),
-        storagePath: storagePath,
-        downloadUrl: downloadUrl,
-        isShared: false,
-        shareToken: null,
-        shareExpiry: null,
-      }
-    );
+    const fileDoc = await addDoc(collection(db, "users", userId, "files"), {
+      fileName: file.name,
+      fileSize: file.size,
+      fileMimeType: file.type || "application/octet-stream",
+      uploadedAt: new Date().toISOString(),
+      storagePath: storagePath,
+      downloadUrl: downloadUrl,
+      isShared: false,
+      shareToken: null,
+      shareExpiry: null,
+    });
 
     console.log("[Upload] Metadata saved to Firestore:", fileDoc.id);
 
@@ -126,33 +124,35 @@ export const uploadFile = async (
     // Detailed error messages for troubleshooting
     if (error.code === "storage/unauthorized") {
       throw new Error(
-        "Upload permission denied. Check Storage Rules and authentication."
+        "Upload permission denied. Check Storage Rules and authentication.",
       );
     } else if (error.code === "storage/retry-limit-exceeded") {
       throw new Error(
-        "Upload timeout. Please check your connection and try again."
+        "Upload timeout. Please check your connection and try again.",
       );
     } else if (error.code === "storage/invalid-argument") {
       throw new Error("Invalid file or path. Please try a different file.");
     } else if (error.code === "storage/object-not-found") {
       throw new Error(
-        "Storage location not found. Configuration issue detected."
+        "Storage location not found. Configuration issue detected.",
       );
     } else if (error.code === "storage/bucket-not-found") {
       throw new Error("Storage bucket not accessible. Check Firebase config.");
     } else if (error.message?.includes("Network")) {
       throw new Error(
-        "Network error during upload. Check connection and CORS settings."
+        "Network error during upload. Check connection and CORS settings.",
       );
     }
 
     throw new Error(
-      `Upload failed: ${error.message || "Unknown error occurred"}`
+      `Upload failed: ${error.message || "Unknown error occurred"}`,
     );
   }
 };
 
-export const listUserFiles = async (userId: string): Promise<FileMetadata[]> => {
+export const listUserFiles = async (
+  userId: string,
+): Promise<FileMetadata[]> => {
   if (!userId || userId.trim() === "") {
     throw new Error("User not authenticated");
   }
@@ -187,7 +187,7 @@ export const listUserFiles = async (userId: string): Promise<FileMetadata[]> => 
 export const deleteFile = async (
   userId: string,
   fileId: string,
-  storagePath: string
+  storagePath: string,
 ): Promise<void> => {
   if (!userId || userId.trim() === "") {
     throw new Error("User not authenticated");
@@ -216,7 +216,7 @@ export const deleteFile = async (
 export const downloadFile = async (
   userId: string,
   storagePath: string,
-  fileName: string
+  fileName: string,
 ): Promise<void> => {
   if (!userId || userId.trim() === "") {
     throw new Error("User not authenticated");
@@ -244,7 +244,7 @@ export const downloadFile = async (
 export const createShareLink = async (
   userId: string,
   fileId: string,
-  expiryHours: number
+  expiryHours: number,
 ): Promise<{ token: string; url: string }> => {
   if (!userId || userId.trim() === "") {
     throw new Error("User not authenticated");
@@ -252,7 +252,8 @@ export const createShareLink = async (
 
   try {
     const expiry = new Date(Date.now() + expiryHours * 60 * 60 * 1000);
-    const shareToken = Math.random().toString(36).substring(2, 15) +
+    const shareToken =
+      Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15);
 
     const fileDocRef = doc(db, "users", userId, "files", fileId);

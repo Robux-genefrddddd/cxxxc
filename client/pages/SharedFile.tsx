@@ -99,7 +99,8 @@ export default function SharedFile() {
                 <p className="text-sm font-medium text-destructive">{error}</p>
                 {error.includes("backend") && (
                   <p className="text-xs text-destructive/80 mt-1">
-                    This feature requires backend endpoint implementation for secure token resolution.
+                    This feature requires backend endpoint implementation for
+                    secure token resolution.
                   </p>
                 )}
               </div>

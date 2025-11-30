@@ -21,11 +21,7 @@ export function ShareModal({ file, onClose }: ShareModalProps) {
     setLoading(true);
 
     try {
-      const result = await createShareLink(
-        user.uid,
-        file.id,
-        expiryHours
-      );
+      const result = await createShareLink(user.uid, file.id, expiryHours);
       setShareLink(result.url);
     } catch (error) {
       console.error("Failed to create share link:", error);

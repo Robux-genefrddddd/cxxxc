@@ -7,6 +7,7 @@ Welcome! CloudVault is a complete, production-ready cloud storage application. T
 Your application is 100% complete and includes:
 
 ### Pages & Features
+
 - ✅ **Landing Page** (`/`) - Professional hero with features showcase
 - ✅ **Registration** (`/register`) - Create new accounts
 - ✅ **Login** (`/login`) - Authenticate users
@@ -17,6 +18,7 @@ Your application is 100% complete and includes:
 - ✅ **404 Page** - Error handling
 
 ### Core Features
+
 - ✅ User authentication (email/password)
 - ✅ File upload (up to 5GB per file)
 - ✅ File download
@@ -28,6 +30,7 @@ Your application is 100% complete and includes:
 - ✅ Account deletion
 
 ### Security Features
+
 - ✅ Firebase Authentication
 - ✅ Firestore security rules
 - ✅ Cloud Storage access control
@@ -35,6 +38,7 @@ Your application is 100% complete and includes:
 - ✅ Token-based sharing
 
 ### Design
+
 - ✅ Professional, modern UI
 - ✅ Responsive on all screen sizes
 - ✅ Clean color scheme
@@ -48,6 +52,7 @@ Your application is 100% complete and includes:
 Dependencies are already installed! Firebase was added to `package.json`.
 
 If you need to reinstall:
+
 ```bash
 pnpm install
 ```
@@ -82,9 +87,9 @@ pnpm install
    - Copy content from `firestore.rules` file
    - Paste into Firestore editor
    - Click **Publish**
-   
    - In Cloud Storage, go to **Rules** tab
    - Replace with this:
+
    ```
    rules_version = '2';
    service firebase.storage {
@@ -98,6 +103,7 @@ pnpm install
      }
    }
    ```
+
    - Click **Publish**
 
 ### 3. Run the App
@@ -105,6 +111,7 @@ pnpm install
 The app should already be running at `https://babeed3b21444eb9b302e060656ff7be-a0f11c510658416ebe83c00eb.projects.builder.codes`
 
 To restart:
+
 ```bash
 pnpm dev
 ```
@@ -145,21 +152,25 @@ Configuration:
 ## Key Files You Might Need to Edit
 
 ### `client/lib/firebase.ts`
+
 **What**: Firebase configuration
 **When**: After creating Firebase project
 **How**: Replace config values with your Firebase project
 
 ### `firestore.rules`
+
 **What**: Firestore security rules
 **When**: Set up Firestore database
 **How**: Copy content to Firestore rules editor
 
 ### `client/global.css`
+
 **What**: Color scheme and design tokens
 **When**: Want to customize colors
 **How**: Edit HSL color values
 
 ### `tailwind.config.ts`
+
 **What**: Tailwind CSS configuration
 **When**: Want to add new colors or customize
 **How**: Add colors in `extend.colors` section
@@ -167,14 +178,17 @@ Configuration:
 ## Important Security Notes
 
 ✅ **Firestore Rules**: Control who can read/write data
+
 - Currently: Users can only access their own data
 - Must be deployed for security
 
 ✅ **Cloud Storage Rules**: Control who can upload/download files
+
 - Currently: Users can only access their own files
 - Must be deployed for security
 
 ✅ **Firebase Auth**: Handles user authentication
+
 - Passwords are never stored in Firestore
 - Session managed automatically
 
@@ -183,18 +197,21 @@ Configuration:
 ## How the App Works
 
 ### Authentication Flow
+
 1. User registers → Firebase Auth creates account
 2. User data saved to Firestore
 3. User logged in → Session maintained
 4. User logs out → Session cleared
 
 ### File Upload Flow
+
 1. User selects files
 2. Files uploaded to Cloud Storage
 3. Metadata saved to Firestore
 4. File appears in list
 
 ### File Sharing Flow
+
 1. User creates share link
 2. Random token generated
 3. Link saved with expiry time
@@ -207,10 +224,10 @@ Configuration:
 Edit `client/global.css` - look for `:root` section:
 
 ```css
---primary: 216 98% 52%;        /* Main blue */
+--primary: 216 98% 52%; /* Main blue */
 --primary-foreground: 0 0% 100%;
---background: 0 0% 100%;       /* White */
---foreground: 215 11% 15%;     /* Dark gray */
+--background: 0 0% 100%; /* White */
+--foreground: 215 11% 15%; /* Dark gray */
 ```
 
 Colors are in HSL format (Hue Saturation Lightness).
@@ -233,6 +250,7 @@ Colors are in HSL format (Hue Saturation Lightness).
 ### Customize File Upload Limit
 
 Edit `client/lib/fileUtils.ts`:
+
 ```typescript
 const MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024; // Change this
 ```
@@ -240,25 +258,30 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024; // Change this
 ## Troubleshooting
 
 ### "Firebase config is not valid"
+
 - Check you copied all fields from Firebase Console
 - Ensure no typos in field names
 - Make sure `projectId` matches your Firebase project
 
 ### "Permission denied" on upload
+
 - Verify Cloud Storage rules are published
 - Check you're logged in
 - Clear browser cache and try again
 
 ### "Users collection not found"
+
 - Create first account (automatically creates collection)
 - Or manually create `users` collection in Firestore
 
 ### Can't see uploaded files
+
 - Verify Firestore rules are published
 - Check files appear in Cloud Storage console
 - Try in incognito window
 
 ### Login fails
+
 - Check user exists in Firebase Auth console
 - Try resetting password
 - Check console for error messages
@@ -326,15 +349,15 @@ pnpm start
 
 ## Important Files Reference
 
-| File | Purpose | Edit When |
-|------|---------|-----------|
-| `client/lib/firebase.ts` | Firebase config | Setting up Firebase |
-| `firestore.rules` | Security rules | Setting up Firestore |
-| `client/global.css` | Colors & design | Want to customize theme |
-| `client/pages/` | App pages | Need to add features |
-| `README.md` | Full docs | Need detailed info |
-| `SETUP.md` | Detailed guide | Need step-by-step help |
-| `FIREBASE_SETUP_CHECKLIST.md` | Firebase checklist | Setting up Firebase |
+| File                          | Purpose            | Edit When               |
+| ----------------------------- | ------------------ | ----------------------- |
+| `client/lib/firebase.ts`      | Firebase config    | Setting up Firebase     |
+| `firestore.rules`             | Security rules     | Setting up Firestore    |
+| `client/global.css`           | Colors & design    | Want to customize theme |
+| `client/pages/`               | App pages          | Need to add features    |
+| `README.md`                   | Full docs          | Need detailed info      |
+| `SETUP.md`                    | Detailed guide     | Need step-by-step help  |
+| `FIREBASE_SETUP_CHECKLIST.md` | Firebase checklist | Setting up Firebase     |
 
 ## Support & Documentation
 
@@ -348,24 +371,28 @@ pnpm start
 ## What's Different from Most Cloud Apps?
 
 ✨ **Production Ready**
+
 - Complete authentication flow
 - Proper error handling
 - Loading states
 - Form validation
 
 ✨ **Secure by Default**
+
 - Firestore rules enforced
 - User isolation built-in
 - Storage access controlled
 - No exposed credentials
 
 ✨ **Professional Design**
+
 - Clean, modern interface
 - Responsive on all devices
 - Accessible components
 - Smooth interactions
 
 ✨ **Easy to Customize**
+
 - Clear file structure
 - Well-organized code
 - Easy to find things
@@ -374,6 +401,7 @@ pnpm start
 ## Summary
 
 You now have:
+
 - ✅ Complete cloud storage app
 - ✅ Professional design
 - ✅ Security built-in

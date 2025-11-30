@@ -36,7 +36,9 @@ export function Header() {
               className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-secondary transition-colors"
             >
               <div className="text-right">
-                <p className="text-sm font-medium text-foreground">{user?.email}</p>
+                <p className="text-sm font-medium text-foreground">
+                  {user?.email}
+                </p>
                 <p className="text-xs text-muted-foreground">Pro</p>
               </div>
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/50 rounded-full flex items-center justify-center">
