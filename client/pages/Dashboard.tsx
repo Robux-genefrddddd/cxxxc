@@ -11,6 +11,8 @@ import {
   FileMetadata,
   formatFileSize,
 } from "@/lib/fileUtils";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import {
   Upload,
   AlertCircle,
