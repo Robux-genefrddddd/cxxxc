@@ -40,6 +40,17 @@ export default function Dashboard() {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (!user) return;
+
+    // Auto-refresh user data periodically or when storage changes
+    const interval = setInterval(() => {
+      refreshUserData();
+    }, 5000); // Refresh every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [user]);
+
   const loadFiles = async () => {
     if (!user) return;
     try {
