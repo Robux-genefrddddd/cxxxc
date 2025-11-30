@@ -304,3 +304,41 @@ export const formatDate = (dateString: string): string => {
     return dateString;
   }
 };
+
+export const calculateStorageUsed = async (userId: string): Promise<number> => {
+  if (!userId || userId.trim() === "") {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    const filesRef = collection(db, "users", userId, "files");
+    const snapshot = await getDocs(query(filesRef));
+
+    let totalSize = 0;
+    snapshot.docs.forEach((doc) => {
+      const fileSize = doc.data().fileSize || 0;
+      totalSize += fileSize;
+    });
+
+    return totalSize;
+  } catch (error: any) {
+    console.error("[CalculateStorageUsed] Error:", error);
+    return 0;
+  }
+};
+
+export const updateUserStorageUsed = async (userId: string): Promise<void> => {
+  if (!userId || userId.trim() === "") {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    const storageUsed = await calculateStorageUsed(userId);
+    await updateDoc(doc(db, "users", userId), {
+      storageUsed: storageUsed,
+    });
+    console.log("[UpdateStorageUsed] Updated storage used:", storageUsed);
+  } catch (error: any) {
+    console.error("[UpdateStorageUsed] Error:", error);
+  }
+};
