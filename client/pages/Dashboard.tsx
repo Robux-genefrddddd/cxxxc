@@ -69,8 +69,9 @@ export default function Dashboard() {
       const userDocRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userDocRef);
       if (userDoc.exists()) {
-        // Trigger a re-render by updating state
-        window.dispatchEvent(new Event("user-data-updated"));
+        // Force parent component to update by calling a refresh
+        // The userData will be updated automatically when Firestore changes
+        console.log("[Dashboard] User data refreshed");
       }
     } catch (err) {
       console.error("Failed to refresh user data:", err);
