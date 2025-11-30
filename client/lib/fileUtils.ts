@@ -39,7 +39,12 @@ export const uploadFile = async (
 ): Promise<FileMetadata> => {
   // Auth check - CRITICAL
   if (!userId || userId.trim() === "") {
-    throw new Error("User not authenticated. Please login and try again.");
+    throw new Error("User not authenticated");
+  }
+
+  // Validate userId format (Firebase UIDs are non-empty strings)
+  if (typeof userId !== 'string' || userId.length === 0) {
+    throw new Error("Invalid user authentication state");
   }
 
   // File validation
