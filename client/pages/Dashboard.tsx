@@ -81,6 +81,7 @@ export default function Dashboard() {
       }
 
       await loadFiles();
+      await refreshUserData();
       setUploadProgress(0);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
