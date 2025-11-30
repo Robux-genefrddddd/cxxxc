@@ -50,6 +50,20 @@ export default function Dashboard() {
     }
   };
 
+  const refreshUserData = async () => {
+    if (!user) return;
+    try {
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        // Trigger a re-render by updating state
+        window.dispatchEvent(new Event("user-data-updated"));
+      }
+    } catch (err) {
+      console.error("Failed to refresh user data:", err);
+    }
+  };
+
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.target.files;
     if (!selectedFiles || !user) return;
